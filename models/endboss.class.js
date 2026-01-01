@@ -1,31 +1,30 @@
 class Endboss extends MovableObject {
 
-    y = 360;
-    height = 60;
-    width = 60;
+    y = 0;
+    height = 450;
+    width = 400;
     IMAGES_WALKING = [
-        "img/4_enemie_boss_chicken/1_walk/G1.png",
-        "img/4_enemie_boss_chicken/1_walk/G2.png",
-        "img/4_enemie_boss_chicken/1_walk/G3.png",
-        "img/4_enemie_boss_chicken/1_walk/G4.png"
+        "img/4_enemie_boss_chicken/2_alert/G5.png",
+        "img/4_enemie_boss_chicken/2_alert/G6.png",
+        "img/4_enemie_boss_chicken/2_alert/G7.png",
+        "img/4_enemie_boss_chicken/2_alert/G8.png",
+        "img/4_enemie_boss_chicken/2_alert/G9.png",
+        "img/4_enemie_boss_chicken/2_alert/G10.png",
+        "img/4_enemie_boss_chicken/2_alert/G11.png",
+        "img/4_enemie_boss_chicken/2_alert/G12.png"
     ]
 
     constructor() {
-        super().loadImage("img/4_enemie_boss_chicken/1_walk/G1.png");
+        super().loadImage(this.IMAGES_WALKING[0]);
         this.loadImages(this.IMAGES_WALKING);
 
-        this.x = 700;
-        this.speed = 0.15;
+        this.x = 4500;
         this.animate();
     }
 
     animate() {
-        this.moveLeft();
         setInterval(() => {
-            let i = this.currentImage % this.IMAGES_WALKING.length;
-            let path = this.IMAGES_WALKING[i];
-            this.img = this.imageCache[path];
-            this.currentImage++;
+            this.playAnimation(this.IMAGES_WALKING);
         }, 1000 / 10);
     }
 }
