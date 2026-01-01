@@ -10,6 +10,7 @@ class MovableObject {
     speedY = 0;
     acceleration = 2;
     otherDirection = false;
+    hitboxOffset = {top: 0, right: 0, bottom: 0, left: 0};
 
 
     applyGravity() {
@@ -33,6 +34,39 @@ class MovableObject {
         this.img = new Image();
         this.img.src = path;
     }
+    
+    draw(ctx) {
+        ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
+    }
+
+    drawFrame(ctx) {
+        if (this instanceof Character || this instanceof Chicken || this instanceof Endboss) {
+            ctx.beginPath();
+            ctx.lineWidth = "5";
+            ctx.strokeStyle = "blue";
+            ctx.rect(this.x, this.y, this.width, this.height);
+            ctx.stroke();
+
+            // Hitbox
+            ctx.beginPath();
+            ctx.lineWidth = "2";
+            ctx.strokeStyle = "red";
+            ctx.rect(
+                this.x + this.hitboxOffset.left,
+                this.y + this.hitboxOffset.top,
+                this.width - this.hitboxOffset.left - this.hitboxOffset.right,
+                this.height - this.hitboxOffset.top - this.hitboxOffset.bottom
+            );
+            ctx.stroke();
+        }
+    }
+
+    isColliding(mo) {
+        return this.x + this.hitboxOffset.left < mo.x + mo.width - mo.hitboxOffset.right &&
+               this.x + this.width - this.hitboxOffset.right > mo.x + mo.hitboxOffset.left &&
+               this.y + this.hitboxOffset.top < mo.y + mo.height - mo.hitboxOffset.bottom &&
+               this.y + this.height - this.hitboxOffset.bottom > mo.y + mo.hitboxOffset.top;
+    }
 
     loadImages(arr) {
         arr.forEach((path) => {
@@ -42,12 +76,12 @@ class MovableObject {
         });
     }
 
-        playAnimation(images) {
-            let i = this.currentImage % images.length;
-            let path = images[i];
-            this.img = this.imageCache[path];
-            this.currentImage++;
-        }
+    playAnimation(images) {
+        let i = this.currentImage % images.length;
+        let path = images[i];
+        this.img = this.imageCache[path];
+        this.currentImage++;
+    }
 
     moveRight() {
         this.x += this.speed;
