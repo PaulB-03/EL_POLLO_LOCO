@@ -11,6 +11,8 @@ class MovableObject {
     acceleration = 2;
     otherDirection = false;
     hitboxOffset = {top: 0, right: 0, bottom: 0, left: 0};
+    energy = 100;
+    lastHit = 0;
 
 
     applyGravity() {
@@ -66,6 +68,25 @@ class MovableObject {
                this.x + this.width - this.hitboxOffset.right > mo.x + mo.hitboxOffset.left &&
                this.y + this.hitboxOffset.top < mo.y + mo.height - mo.hitboxOffset.bottom &&
                this.y + this.height - this.hitboxOffset.bottom > mo.y + mo.hitboxOffset.top;
+    }
+
+    hit() {
+        this.energy -= 5;
+        if (this.energy < 0) {
+            this.energy = 0;
+        } else {
+            this.lastHit = new Date().getTime();
+        }
+    }
+
+    isDead() {
+        return this.energy == 0;
+    }
+
+    isHurt() {
+        let timePassed = new Date().getTime() - this.lastHit;
+        timePassed = timePassed / 1000;
+        return timePassed < 0.5;
     }
 
     loadImages(arr) {
