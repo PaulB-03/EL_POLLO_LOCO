@@ -9,6 +9,7 @@ class World {
     statusBar = new StatusBar();
     coinBar = new CoinBar();
     bottleBar = new BottleBar();
+    bossBar = new BossBar();
     throwableObjects = [];
 
 
@@ -42,10 +43,15 @@ class World {
     }
 
     checkCollisions() {
-        this.level.enemies.forEach((enemy) => {
+        this.level.enemies.forEach((enemy, index) => {
                 if (this.character.isColliding(enemy)) {
                     this.character.hit();
                     this.statusBar.setPercentage(this.character.energy);
+                }
+
+                if (this.throwableObjects.some((bottle) => bottle.isColliding(enemy))) {
+                    console.log("Enemy hit!", enemy, index);
+                    this.level.enemies.splice(index, 1);
                 }
             });
         this.level.coins.forEach((coin, index) => {
@@ -83,6 +89,7 @@ class World {
         this.addObjectsToMap(this.throwableObjects);
         this.addObjectsToMap(this.level.coins);
         this.addObjectsToMap(this.level.salsa_bottles);
+        this.addToMap(this.bossBar);
         
 
         this.ctx.translate(-this.camera_x, 0);

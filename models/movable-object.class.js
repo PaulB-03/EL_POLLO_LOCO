@@ -7,7 +7,7 @@ class MovableObject extends DrawableObject {
     energy = 100;
     lastHit = 0;
     numberOfCoins = 0;
-    numberOfBottles = 3;
+    numberOfBottles = 0;
 
 
     applyGravity() {
