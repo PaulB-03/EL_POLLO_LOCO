@@ -57,5 +57,18 @@ const level1 = new Level(
         new BackgroundObject("img/5_background/layers/3_third_layer/1.png", 719 * 8),
         new BackgroundObject("img/5_background/layers/2_second_layer/1.png", 719 * 8),
         new BackgroundObject("img/5_background/layers/1_first_layer/1.png", 719 * 8),
+    ],
+    [
+        new Coin(400),
+        new Coin(800),
+        new Coin(1200),
+        new Coin(1600),
+        new Coin(2000)
+    ],
+    [
+        new SalsaBottle(500),
+        new SalsaBottle(900),
+        new SalsaBottle(1500),
+        new SalsaBottle(2500)
     ]
 )

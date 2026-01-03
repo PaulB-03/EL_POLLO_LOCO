@@ -6,6 +6,8 @@ class MovableObject extends DrawableObject {
     hitboxOffset = {top: 0, right: 0, bottom: 0, left: 0};
     energy = 100;
     lastHit = 0;
+    numberOfCoins = 0;
+    numberOfBottles = 3;
 
 
     applyGravity() {
