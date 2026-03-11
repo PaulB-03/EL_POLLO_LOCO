@@ -38,6 +38,7 @@ class Character extends MovableObject {
     ];
     world;
     speed = 10;
+    gameOverBool = false;
 
     constructor() {
         super().loadImage("img/2_character_pepe/2_walk/W-21.png");
@@ -74,6 +75,10 @@ class Character extends MovableObject {
 
             if (this.isDead()) {
                 this.playAnimation(this.IMAGES_DEAD);
+                if (!this.gameOverBool) {
+                    this.gameOverBool = true;
+                    gameOver();
+                }
             } else if (this.isHurt()) {
                 this.playAnimation(this.IMAGES_HURT);
             } else if (this.isAboveGround()) {

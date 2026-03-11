@@ -155,12 +155,29 @@ class World {
     reset() {
         this.character.reset();
         this.resetEnemies();
+        this.resetLevel();
     }
 
     resetEnemies() {
         this.level.enemies.forEach(enemy => {
             enemy.isDead = false;
             enemy.energy = 100;
+            if (enemy instanceof Chicken) {
+                enemy.setRandomPosition();
+            }
         });
+    }
+
+    resetLevel() {
+        this.level.coins = [];
+        this.level.salsa_bottles = [];
+        for (let i = 1; i <= 5; i++) {
+            this.level.coins.push(new Coin(i * 400));
+        }
+        this.level.salsa_bottles.push(new SalsaBottle(500));
+        this.level.salsa_bottles.push(new SalsaBottle(1000));
+        this.level.salsa_bottles.push(new SalsaBottle(1400));
+        this.level.salsa_bottles.push(new SalsaBottle(1800));
+        this.level.salsa_bottles.push(new SalsaBottle(2500));
     }
 }

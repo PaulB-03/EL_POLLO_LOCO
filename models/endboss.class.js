@@ -32,7 +32,7 @@ class Endboss extends MovableObject {
 
     bossHit () {
         this.bossEnergy -= 25;
-        if (this.bossEnergy < 0) {
+        if (this.bossEnergy <= 0) {
             this.bossEnergy = 0;
             gameWin();
         }

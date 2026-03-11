@@ -72,6 +72,13 @@ function toggleFullscreen() {
 function restartGame() {
     clearCanvas();
     resetGameWorld();
+    toggleGameOverScreen();
+}
+
+function restartGameWin() {
+    clearCanvas();
+    resetGameWorld();
+    toggleWinScreen();
 }
 
 function clearCanvas() {
@@ -86,6 +93,29 @@ function resetGameWorld() {
     init();
 }
 
+function gameOver() {
+    console.log("Game Over!");
+    toggleGameOverScreen();
+}
+
+function toggleGameOverScreen() {
+    const gameOverScreen = document.getElementById("game-over-screen");
+    if (gameOverScreen.classList.contains("dp_none")) {
+        gameOverScreen.classList.remove("dp_none");
+    } else {
+        gameOverScreen.classList.add("dp_none");
+    }
+}
+
 function gameWin () {
-    
+    toggleWinScreen();
+}
+
+function toggleWinScreen() {
+    const winScreen = document.getElementById("win-screen");
+    if (winScreen.classList.contains("dp_none")) {
+        winScreen.classList.remove("dp_none");
+    } else {
+        winScreen.classList.add("dp_none");
+    }
 }

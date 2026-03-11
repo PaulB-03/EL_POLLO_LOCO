@@ -53,18 +53,18 @@ canvas {
     align-items: center;
 }
 
-.start-screen {
+.start-screen, .game-over-screen, .win-screen {
     position: relative;
     display: inline-block;
 }
 
-.start-screen img{
+.start-screen img, .game-over-screen img, .win-screen img {
     display: block;
     width: 100%;
     height: 480px;
 }
 
-.start-screen button {
+.start-screen button, .game-over-screen button, .win-screen button {
     position: absolute;
     top: 20%;
     left: 50%;
@@ -103,30 +103,4 @@ canvas {
     width: 720px;
     font-size: 24px;
     text-shadow: 2px 2px 2px white;
-}
-
-.game-over-screen {
-    position: relative;
-    display: inline-block;
-}
-
-.game-over-screen img{
-    display: block;
-    width: 100%;
-    height: 480px;
-}
-
-.game-over-screen button {
-    position: absolute;
-    top: 20%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 15px 30px;
-    font-size: 24px;
-    background-color: burlywood;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-family: 'zabars', sans-serif;
-    letter-spacing: 1px;
 }
