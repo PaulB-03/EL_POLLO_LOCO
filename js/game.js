@@ -50,3 +50,21 @@ window.addEventListener("keyup", (event) => {
         keyboard.D = false;
     }
 });
+
+function startGame() {
+    hideStartScreen();
+    init();
+}
+
+function hideStartScreen() {
+    document.getElementById("start-screen").classList.add("dp_none");
+}
+
+function toggleFullscreen() {
+    canvasContainer = document.getElementById("canvas-container");
+    if (!document.fullscreenElement) {
+        canvasContainer.requestFullscreen();
+    } else {
+        document.exitFullscreen();
+    }
+}

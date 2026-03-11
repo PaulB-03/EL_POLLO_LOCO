@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <script src="./models/drawable-object.class.js"></script>
     <script src="./models/movable-object.class.js"></script>
+    <script src="./models/start-screen.class.js"></script>
     <script src="./models/background-object.class.js"></script>
     <script src="./models/keyboard.class.js"></script>
     <script src="./models/character.class.js"></script>
@@ -25,8 +26,28 @@
     <script src="./levels/level1.js"></script>
     <script src="./js/game.js"></script>
 </head>
-<body onload="init()">
+<body>
     <h1>Welcome to EL POLLO LOCO!</h1>
-    <canvas id="canvas" width="720px" height="480px"></canvas>
+    <div class="canvas-container" id="canvas-container">
+        <canvas id="canvas" width="720px" height="480px"></canvas>
+        <div class="overlay-screen" id="overlay-screen">
+            <div class="start-screen" id="start-screen">
+                <img src="./img/9_intro_outro_screens/start/startscreen_1.png" alt="Start Screen">
+                <button onclick="startGame()">Start Game</button>
+            </div>
+            <div class="game-over-screen">
+
+            </div>
+            <div class="win-screen">
+
+            </div>
+            <button class="fullscreen-button" onclick="toggleFullscreen()"> <img src="/img/fullscreen.png" alt="fullscreen"></button>
+        </div>
+    </div>
+    <div class="controlls">
+        <p>Move: Arrow Keys</p>
+        <p>Jump: Spacebar</p>
+        <p>Throw bottle: D</p>
+    </div>
 </body>
 </html>
