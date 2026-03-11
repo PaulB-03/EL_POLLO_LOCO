@@ -162,6 +162,7 @@ class World {
         this.level.enemies.forEach(enemy => {
             enemy.isDead = false;
             enemy.energy = 100;
+            enemy.bossIsDead = false;
             if (enemy instanceof Chicken) {
                 enemy.setRandomPosition();
             }
