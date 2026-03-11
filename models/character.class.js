@@ -85,4 +85,13 @@ class Character extends MovableObject {
             }
         }, 1000 / 10);
     }
+
+    reset() {
+        this.x = 100;
+        this.y = 155;
+        this.energy = 100;
+        this.numberOfCoins = 0;
+        this.numberOfBottles = 0;
+        this.speed = 10;
+    }
 }

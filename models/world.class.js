@@ -51,7 +51,27 @@ class World {
 
                 if (this.throwableObjects.some((bottle) => bottle.isColliding(enemy))) {
                     console.log("Enemy hit!", enemy, index);
-                    this.level.enemies.splice(index, 1);
+                    console.log(" Hit with this object:", this.throwableObjects);
+                    if (enemy instanceof Endboss) {
+                        enemy.bossHit();
+                        this.bossBar.setPercentage(enemy.bossEnergy);
+                        console.log("Boss hit! Boss energy:", enemy.bossEnergy);
+                        this.throwableObjects.forEach((bottle, bottleIndex) => {
+                            if (bottle.isColliding(enemy)) {
+                                bottle.bottleHit();
+                                this.throwableObjects.splice(bottleIndex, 1);
+                            }
+                        });
+                    } else { 
+                        this.level.enemies.splice(index, 1);
+                        this.throwableObjects.forEach((bottle, bottleIndex) => {
+                            if (bottle.isColliding(enemy)) {
+                                bottle.bottleHit();
+                                this.throwableObjects.splice(bottleIndex, 1);
+                            }
+                        });
+                        
+                    }
                 }
             });
         this.level.coins.forEach((coin, index) => {
@@ -130,5 +150,17 @@ class World {
     flipImageBack(mo) {
         mo.x = mo.x * -1;
         this.ctx.restore();
+    }
+
+    reset() {
+        this.character.reset();
+        this.resetEnemies();
+    }
+
+    resetEnemies() {
+        this.level.enemies.forEach(enemy => {
+            enemy.isDead = false;
+            enemy.energy = 100;
+        });
     }
 }

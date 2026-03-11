@@ -34,4 +34,12 @@ class ThrowableObject extends MovableObject {
             this.x += 10;
         }, 25);
     }
+
+    bottleHit () {
+        console.log("Bottle hit!");
+        this.speedY = 0;
+        this.loadImages(this.IMAGES_SPLASH);
+        this.playAnimation(this.IMAGES_SPLASH);
+        this.y = 10000; // Move the bottle off-screen after it hits something
+    }
 }

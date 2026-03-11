@@ -4,6 +4,7 @@ class Endboss extends MovableObject {
     height = 450;
     width = 400;
     hitboxOffset = {top: 80, right: 18, bottom: 15, left: 18};
+    bossEnergy = 100;
     IMAGES_WALKING = [
         "img/4_enemie_boss_chicken/2_alert/G5.png",
         "img/4_enemie_boss_chicken/2_alert/G6.png",
@@ -27,5 +28,13 @@ class Endboss extends MovableObject {
         setInterval(() => {
             this.playAnimation(this.IMAGES_WALKING);
         }, 1000 / 10);
+    }
+
+    bossHit () {
+        this.bossEnergy -= 25;
+        if (this.bossEnergy < 0) {
+            this.bossEnergy = 0;
+            gameWin();
+        }
     }
 }

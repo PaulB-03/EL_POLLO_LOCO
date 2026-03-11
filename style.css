@@ -29,6 +29,8 @@ h1 {
     margin: 0 auto;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
     background-image: url(/img/desert.png);
+    background-size: cover;
+    background-position: center;
 }
 
 canvas {
@@ -94,7 +96,6 @@ canvas {
     height: 30px;
 }
 
-
 .controlls {
     display: flex;
     flex-direction: row;
@@ -102,4 +103,30 @@ canvas {
     width: 720px;
     font-size: 24px;
     text-shadow: 2px 2px 2px white;
+}
+
+.game-over-screen {
+    position: relative;
+    display: inline-block;
+}
+
+.game-over-screen img{
+    display: block;
+    width: 100%;
+    height: 480px;
+}
+
+.game-over-screen button {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 15px 30px;
+    font-size: 24px;
+    background-color: burlywood;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'zabars', sans-serif;
+    letter-spacing: 1px;
 }
