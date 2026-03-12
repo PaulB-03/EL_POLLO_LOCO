@@ -36,22 +36,19 @@ class Endboss extends MovableObject {
     }
 
     animate(IMAGES) {
-        if (this.bossEnergy <=0) return; 
-        setInterval(() => {
-            this.playAnimation(IMAGES);
-        }, 1000 / 5);
-    }
-
-    playDeathAnimation() {
-        let currentImageIndex = 0;
-        let deathInterval = setInterval(() => {
-            if (currentImageIndex < this.IMAGES_DEAD.length) {
-                this.loadImage(this.IMAGES_DEAD[currentImageIndex]);
-                currentImageIndex++;
-            } else {
-                clearInterval(deathInterval);
-            }
-        }, 200);
+        if (this.bossEnergy <=0) {
+            setInterval(() => {
+            this.playAnimation(this.IMAGES_DEAD);
+        }, 1000);
+        setTimeout(() => {
+            this.y = 10000;
+        }, 1000);
+        } else {
+            setInterval(() => {
+                this.playAnimation(IMAGES);
+            }, 200);
+        }
+        
     }
 
     bossHit () {
@@ -60,7 +57,7 @@ class Endboss extends MovableObject {
             this.bossEnergy = 0;
             this.bossIsDead = true;
             gameWin();
-            this.playDeathAnimation();
+            this.animate(this.IMAGES_DEAD);
             
         }
     }

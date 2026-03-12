@@ -52,6 +52,7 @@ window.addEventListener("keyup", (event) => {
 });
 
 function startGame() {
+    initLevel();
     hideStartScreen();
     init();
 }
